@@ -35,6 +35,8 @@ def main():
 
     bank.change_name("BSB", [6, 0, 3, 1])
     print(bank.info())
+    bank.set_rates('15-09-2020')
+    print(bank.info())
 
     print()
 

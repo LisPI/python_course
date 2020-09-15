@@ -13,6 +13,9 @@ class MeteoPoint(CityObj):
     def get_name(self):
         return self.__name
 
+    def add_temperature_data(self):
+        pass
+
     def info(self):
         return f"Название: {self.__name}; {super().info()} " \
                f"Размер архива метеонаблюдений: {len(self.__temperature_data)}; Архив: {self.__temperature_data}"
