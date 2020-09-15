@@ -23,8 +23,14 @@ def main():
     city = City("LibertyCity", 2000000, "Ivanov", bank=bank, meteo=meteo, shop=shop)
     print(city.info())
 
-    bank.name = "BSB"
-    print(city.bank.info())
+    city.change_population('3')
+
+    city.change_mayor('папва')
+    city.change_mayor('332fd')
+
+    city.change_sights('332fd')
+    city.change_sights(['tower', 'stadium'])
+    print(city.info())
 
 
 # Press the green button in the gutter to run the script.
