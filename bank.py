@@ -20,8 +20,6 @@ class Bank(CityObj):
     def change_name(self, new_name, votes):
         if self.__accounting(votes):
             self.__name = new_name
-        else:
-            error("Ошибка голосования")
 
     def set_rates(self, date):
         response = requests.get(f'https://finance.tut.by/arhiv/?date={date}').text
@@ -31,7 +29,6 @@ class Bank(CityObj):
 
         rate = {"USD": usd, "EUR": eur, "RUB": rub}
         self.__rates[date] = rate
-        pass
 
     def change_head(self, new_head, votes):
         if self.__accounting(votes):
@@ -49,6 +46,6 @@ class Bank(CityObj):
             error("Неверное число голосовавших")
             return False
         if votes[0] <= self.__board_members/2:
-            error("Неверное число голосовавших")
+            error("Нет большинства")
             return False
         return True

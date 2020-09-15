@@ -22,6 +22,9 @@ def main():
     city = City("LibertyCity", 2000000, "Ivanov", bank=bank, meteo=meteo, shop=shop)
     print(city.info())
 
+    print()
+
+    print(city.info())
     city.change_population('3')
 
     city.change_mayor('папва')
@@ -33,9 +36,11 @@ def main():
 
     print()
 
-    bank.change_name("BSB", [6, 0, 3, 1])
     print(bank.info())
-    bank.set_rates('15-09-2020')
+    bank.change_name("BSB", [6, 0, 3, 1])
+    bank.change_name("BNB", [4, 2, 3, 1])
+    print(bank.info())
+    bank.set_rates('14-09-2020')
     print(bank.info())
 
     print()
@@ -45,6 +50,17 @@ def main():
     print(meteo.info())
     print(meteo.get_meteopoint_info('meteoPoint2'))
     print(meteo.get_meteopoint_info('mtgfdresgdfggfds'))
+
+    meteo_salihorsk = MeteoPoint("salihorsk")
+    meteo_gomel = MeteoPoint("gomel")
+
+    meteo_salihorsk.add_temperature_data('2020-9-12')
+    meteo.add_meteopoint(meteo_salihorsk)
+
+    meteo.add_meteopoint(meteo_gomel)
+    print(meteo.get_meteopoint_info('gomel'))
+    meteo_gomel.add_temperature_data('2020-5-15')
+    print(meteo.get_meteopoint_info('gomel'))
 
 
 # Press the green button in the gutter to run the script.
