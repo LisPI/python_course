@@ -17,7 +17,7 @@ def main():
     rate1 = {"USD": "2.65", "EUR": "3.01"}
     rate2 = {"USD": "2.66", "EUR": "3.00"}
     rates = {"03.05": rate1, "04.05": rate2}
-    bank = Bank("Alfa", "Red street", "+35634", 12, "Petrov Ivan", rates)
+    bank = Bank("Alfa", "Red street", "+35634", 10, "Petrov Ivan", rates)
     print(bank.info())
 
     city = City("LibertyCity", 2000000, "Ivanov", bank=bank, meteo=meteo, shop=shop)
@@ -31,6 +31,9 @@ def main():
     city.change_sights('332fd')
     city.change_sights(['tower', 'stadium'])
     print(city.info())
+
+    bank.change_name("BSB", [6, 0, 3, 1])
+    print(bank.info())
 
 
 # Press the green button in the gutter to run the script.
