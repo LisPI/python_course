@@ -6,13 +6,12 @@ def main():
     print(shop.info())
 
     meteo_point1 = MeteoPoint("meteoPoint1", "Nemiga street", "+3432", {"01": "26", "02": "24", "03": "25"})
-    meteo_point2 = MeteoPoint("meteoPoint2", "Green street", "+3432", {"01": "26", "02": "24"})
+    # meteo_point2 = MeteoPoint("meteoPoint2", "Green street", "+3432", {"01": "26", "02": "24"})
     print(meteo_point1.info())
-    print(meteo_point2.info())
+    # print(meteo_point2.info())
 
-    meteo = Meteo("Beautiful street", "+374523523", [meteo_point1, meteo_point2])
+    meteo = Meteo("Beautiful street", "+374523523", [meteo_point1])
     print(meteo.info())
-    print(meteo.meteopoint_list[1].info())
 
     rate1 = {"USD": "2.65", "EUR": "3.01"}
     rate2 = {"USD": "2.66", "EUR": "3.00"}
@@ -32,8 +31,18 @@ def main():
     city.change_sights(['tower', 'stadium'])
     print(city.info())
 
+    print()
+
     bank.change_name("BSB", [6, 0, 3, 1])
     print(bank.info())
+
+    print()
+
+    meteo_point2 = MeteoPoint("meteoPoint2", "Green street", "+3432", {"01": "26", "02": "24"})
+    meteo.add_meteopoint(meteo_point2)
+    print(meteo.info())
+    print(meteo.get_meteopoint_info('meteoPoint2'))
+    print(meteo.get_meteopoint_info('mtgfdresgdfggfds'))
 
 
 # Press the green button in the gutter to run the script.

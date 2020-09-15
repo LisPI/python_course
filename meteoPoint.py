@@ -7,9 +7,12 @@ class MeteoPoint(CityObj):
         super().__init__(address, phone_number)
         if temperature_data is None:
             temperature_data = {}
-        self.name = name
-        self.temperature_data = temperature_data
+        self.__name = name
+        self.__temperature_data = temperature_data
+
+    def get_name(self):
+        return self.__name
 
     def info(self):
-        return f"Название: {self.name}; {super().info()} " \
-               f"Размер архива метеонаблюдений: {len(self.temperature_data)};"
+        return f"Название: {self.__name}; {super().info()} " \
+               f"Размер архива метеонаблюдений: {len(self.__temperature_data)}; Архив: {self.__temperature_data}"

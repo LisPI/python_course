@@ -6,9 +6,9 @@ class Shop(CityObj):
         super().__init__(address, phone_number)
         if product_list is None:
             product_list = []
-        self.name = name
-        self.product_list = product_list
+        self.__name = name
+        self.__product_list = product_list
 
     def info(self):
-        return f"Название: {self.name}; {super().info()} " \
-               f"Количество товаров: {len(self.product_list)};"
+        return f"Название: {self.__name}; {super().info()} " \
+               f"Количество товаров: {len(self.__product_list)};"
