@@ -39,6 +39,17 @@ class MeteoPoint(CityObj):
                                           database='weather')
 
             cursor = cnx.cursor()
+            query_data = (list(meteo_data.keys())[0], self.__name)
+            query = ("SELECT day_date FROM meteodata"
+                     " WHERE day_date = %s and pointname = %s")
+
+            cursor.execute(query, query_data)
+            row = cursor.fetchone()
+            if row is not None:
+                print("Данные за этот период уже есть")
+                return
+
+            # cursor = cnx.cursor()
             add_meteodata = ("INSERT INTO meteodata "
                              "(pointname, day_date, temp) "
                              "VALUES (%s, %s, %s)")

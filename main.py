@@ -2,25 +2,25 @@ from city import *
 
 
 def main():
-    shop = Shop("VITALUR", "Lopatina 44", "+34325344", ["bread;1.00", "tea;3.4"])
-    print(shop.info())
+    # shop = Shop("VITALUR", "Lopatina 44", "+34325344", ["bread;1.00", "tea;3.4"])
+    # print(shop.info())
 
-    meteo_point1 = MeteoPoint("meteoPoint1", "Nemiga street", "+3432", {"01": "26", "02": "24", "03": "25"})
+    # meteo_point1 = MeteoPoint("meteoPoint1", "Nemiga street", "+3432", {"01": "26", "02": "24", "03": "25"})
     # meteo_point2 = MeteoPoint("meteoPoint2", "Green street", "+3432", {"01": "26", "02": "24"})
-    print(meteo_point1.info())
+    # print(meteo_point1.info())
     # print(meteo_point2.info())
 
-    meteo = Meteo("Beautiful street", "+374523523", [meteo_point1])
+    meteo = Meteo("Beautiful street", "+374523523")
     print(meteo.info())
 
-    rate1 = {"USD": "2.65", "EUR": "3.01"}
-    rate2 = {"USD": "2.66", "EUR": "3.00"}
-    rates = {"03.05": rate1, "04.05": rate2}
-    bank = Bank("Alfa", "Red street", "+35634", 10, "Petrov Ivan", rates)
-    print(bank.info())
-
-    city = City("LibertyCity", 2000000, "Ivanov", bank=bank, meteo=meteo, shop=shop)
-    print(city.info())
+    # rate1 = {"USD": "2.65", "EUR": "3.01"}
+    # rate2 = {"USD": "2.66", "EUR": "3.00"}
+    # rates = {"03.05": rate1, "04.05": rate2}
+    # bank = Bank("Alfa", "Red street", "+35634", 10, "Petrov Ivan", rates)
+    # print(bank.info())
+    #
+    # city = City("LibertyCity", 2000000, "Ivanov", bank=bank, meteo=meteo, shop=shop)
+    # print(city.info())
 
     # print()
     #
@@ -53,21 +53,20 @@ def main():
 
     meteo_salihorsk = MeteoPoint("salihorsk")
     meteo_gomel = MeteoPoint("gomel")
-    meteo_test = MeteoPoint("minsk")
+    meteo_minsk = MeteoPoint("minsk")
 
-    meteo_salihorsk.add_temperature_data('2020-9-12')
-    meteo.add_meteopoint(meteo_salihorsk)
-
+    meteo.add_meteopoint(meteo_minsk)
+    # meteo_test.add_temperature_data('2020-5-15')
+    # meteo_test.meteoloader('1', '2019')
+    # meteo_test.meteoloader('6', '2020')
+    # print(meteo.get_meteopoint_info('minsk'))
+    meteo_gomel.meteoloader('3', '2018')
+    meteo_gomel.meteoloader('8', '2018')
     meteo.add_meteopoint(meteo_gomel)
-    print(meteo.get_meteopoint_info('gomel'))
-    meteo_gomel.add_temperature_data('2020-5-15')
-    meteo_gomel.add_temperature_data('2018-2-10')
-    print(meteo.get_meteopoint_info('gomel'))
-
-    meteo.add_meteopoint(meteo_test)
-    meteo_test.add_temperature_data('2020-5-15')
-    meteo_test.meteoloader('1', '2019')
-    print(meteo.get_meteopoint_info('minsk'))
+    meteo_grodno = MeteoPoint("grodno")
+    meteo_grodno.meteoloader('7', '2017')
+    meteo.add_meteopoint(meteo_grodno)
+    meteo.meteostatistic()
 
 
 # Press the green button in the gutter to run the script.
