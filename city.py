@@ -20,6 +20,15 @@ class City:
         self.__meteo = meteo
         self.__shop = shop
 
+    def get_name(self):
+        return self.__name
+
+    def get_population(self):
+        return self.__population_size
+
+    def get_sights_size(self):
+        return len(self.__sights)
+
     def change_population(self, new_population_size):
         if isinstance(new_population_size, int):
             self.__population_size = new_population_size

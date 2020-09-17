@@ -25,9 +25,9 @@ class Bank(CityObj):
 
     def set_rates(self, date):
         response = requests.get(f'https://finance.tut.by/arhiv/?date={date}').text
-        usd = re.findall(r'currency=USD&date=.+?<td>([0-9.]+)</td>.+?</tr>', response, re.DOTALL)[0]
-        eur = re.findall(r'currency=EUR&date=.+?<td>([0-9.]+)</td>.+?</tr>', response, re.DOTALL)[0]
-        rub = re.findall(r'currency=RUB&date=.+?<td>([0-9.]+)</td>.+?</tr>', response, re.DOTALL)[0]
+        usd = float(re.findall(r'currency=USD&date=.+?<td>([0-9.]+)</td>.+?</tr>', response, re.DOTALL)[0])
+        eur = float(re.findall(r'currency=EUR&date=.+?<td>([0-9.]+)</td>.+?</tr>', response, re.DOTALL)[0])
+        rub = float(re.findall(r'currency=RUB&date=.+?<td>([0-9.]+)</td>.+?</tr>', response, re.DOTALL)[0])
 
         rate = {"USD": usd, "EUR": eur, "RUB": rub}
         self.__rates[date] = rate
@@ -54,7 +54,7 @@ class Bank(CityObj):
 
     def set_frame_and_series(self):
         self.__rates_frame = pd.DataFrame(self.__rates).T
-        self.__rates_frame = self.__rates_frame.astype('float')
+        #self.__rates_frame = self.__rates_frame.astype('float')
         self.__rates_frame['WEIGHT'] = self.__rates_frame.T.sum()
 
         self.__usd_series = self.__rates_frame['USD']

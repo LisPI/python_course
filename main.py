@@ -1,4 +1,5 @@
 from city import *
+from country import *
 
 
 def main():
@@ -71,9 +72,6 @@ def main():
     # meteo.add_meteopoint(meteo_grodno)
     # meteo.meteostatistic()
 
-    city = City("LibertyCity", 2000000, "Ivanov")
-    print(city.info())
-
     shop = Shop("cars", "Lopatina 44", "+34325344")
     shop.load_products()
     shop.show_products()
@@ -98,6 +96,20 @@ def main():
     print()
     print(bank.get_usd_series())
 
+    print()
+    city = City("LibertyCity", 1500000, "Ivanov")
+    city2 = City("FairytaleCity", 10000, "Ivanov")
+    city3 = City("SomeCity", 750000, "Ivanov")
+    country = Country("MyCountry", [city, city2, city3])
+    print(country.info())
+    country.pre_statistics()
+    print(country.people_stat(100000))
+
+    city2.change_sights(['tower', 'stadium'])
+    print(country.sight_stat())
+
+    country.pre_statistics()
+    print(country.sight_stat())
 
 
 # Press the green button in the gutter to run the script.
