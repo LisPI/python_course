@@ -1,6 +1,7 @@
 from cityObj import *
 import requests
 import re
+import pandas as pd
 
 
 def error(error_str):
@@ -16,6 +17,7 @@ class Bank(CityObj):
         self.__board_members = board_members
         self.__head_of_board = head_of_board
         self.__rates = rates
+        self.__rates_frame = pd.DataFrame()
 
     def change_name(self, new_name, votes):
         if self.__accounting(votes):
@@ -49,3 +51,24 @@ class Bank(CityObj):
             error("Нет большинства")
             return False
         return True
+
+    def set_frame_and_series(self):
+        self.__rates_frame = pd.DataFrame(self.__rates).T
+        self.__rates_frame = self.__rates_frame.astype('float')
+        self.__rates_frame['WEIGHT'] = self.__rates_frame.T.sum()
+
+        self.__usd_series = self.__rates_frame['USD']
+        self.__eur_series = self.__rates_frame['EUR']
+        self.__rub_series = self.__rates_frame['RUB']
+
+    def get_rates_frame(self):
+        return self.__rates_frame
+
+    def get_usd_series(self):
+        return self.__usd_series
+
+    def get_eur_series(self):
+        return self.__eur_series
+
+    def get_rub_series(self):
+        return self.__rub_series

@@ -80,6 +80,25 @@ def main():
     print(shop.info())
     print(shop.search_car('Range', '3300'))
 
+    print()
+
+    bank = Bank("Alfa", "Red street", "+35634", 10, "Petrov Ivan")
+    bank.set_rates('14-09-2020')
+    bank.set_rates('15-09-2020')
+    bank.set_rates('16-09-2020')
+    bank.set_rates('13-09-2020')
+    bank.set_rates('12-09-2020')
+    print(bank.info())
+    bank.set_frame_and_series()
+    print(bank.get_rates_frame())
+    print()
+    print(bank.get_eur_series())
+    print()
+    print(bank.get_rub_series())
+    print()
+    print(bank.get_usd_series())
+
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
