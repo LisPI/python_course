@@ -103,13 +103,13 @@ def main():
     country = Country("MyCountry", [city, city2, city3])
     print(country.info())
     country.pre_statistics()
-    print(country.people_stat(100000))
+    print(country.people_stat(1000000))
 
     city2.change_sights(['tower', 'stadium'])
     print(country.sight_stat())
 
     country.pre_statistics()
-    print(country.sight_stat())
+    print(country.sight_stat(1))
 
 
 # Press the green button in the gutter to run the script.

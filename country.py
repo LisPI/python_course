@@ -28,7 +28,9 @@ class Country:
         self.__country_df["population"] = self.__population
         self.__country_df["sights"] = self.__sights_size
 
-    def people_stat(self, amount=0):
+    def people_stat(self, amount=None):
+        if amount is None:
+            return self.__country_df[['city', 'population']]
         return self.__country_df[self.__country_df['population'] > amount]['city']
 
     def sight_stat(self, amount=None):
