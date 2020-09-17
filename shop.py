@@ -1,4 +1,5 @@
 from cityObj import *
+import pandas as pd
 
 
 class Shop(CityObj):
@@ -12,3 +13,12 @@ class Shop(CityObj):
     def info(self):
         return f"Название: {self.__name}; {super().info()} " \
                f"Количество товаров: {len(self.__product_list)};"
+
+    def load_products(self):
+        self.__product_list = pd.read_csv('price.csv')
+
+    def show_products(self):
+        print(self.__product_list)
+
+    def search_car(self, name, capacity):
+        return self.__product_list.query(f"Type == '{name}' and Capacity > {capacity}")
