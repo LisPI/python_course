@@ -1,5 +1,6 @@
 from city import *
 from country import *
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -72,20 +73,13 @@ def main():
     # meteo.add_meteopoint(meteo_grodno)
     # meteo.meteostatistic()
 
-    shop = Shop("cars", "Lopatina 44", "+34325344")
-    shop.load_products()
-    shop.show_products()
-    print(shop.info())
-    print(shop.search_car('Range', '3300'))
-
-    print()
-
     bank = Bank("Alfa", "Red street", "+35634", 10, "Petrov Ivan")
+
+    bank.set_rates('12-09-2020')
+    bank.set_rates('13-09-2020')
     bank.set_rates('14-09-2020')
     bank.set_rates('15-09-2020')
     bank.set_rates('16-09-2020')
-    bank.set_rates('13-09-2020')
-    bank.set_rates('12-09-2020')
     print(bank.info())
     bank.set_frame_and_series()
     print(bank.get_rates_frame())
@@ -96,21 +90,18 @@ def main():
     print()
     print(bank.get_usd_series())
 
-    print()
-    city = City("LibertyCity", 1500000, "Ivanov")
-    city2 = City("FairytaleCity", 10000, "Ivanov")
-    city3 = City("SomeCity", 750000, "Ivanov")
-    country = Country("MyCountry", [city, city2, city3])
-    print(country.info())
-    country.pre_statistics()
-    print(country.people_stat(1000000))
+    bank.get_rates_frame().plot(kind='bar')
+    plt.xlabel("Дата")
+    plt.ylabel("Стоимость")
+    plt.show()
 
-    city2.change_sights(['tower', 'stadium'])
-    print(country.sight_stat())
+    meteo = Meteo("Beautiful street", "+374523523")
+    print(meteo.info())
 
-    country.pre_statistics()
-    print(country.sight_stat(1))
-
+    meteo_salihorsk = MeteoPoint("salihorsk")
+    meteo_salihorsk.meteoloader('4', '2019')
+    meteo.add_meteopoint(meteo_salihorsk)
+    meteo.display()
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

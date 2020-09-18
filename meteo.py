@@ -1,4 +1,6 @@
 from meteoPoint import *
+import pandas as pd
+import matplotlib.pyplot as plt
 
 
 class Meteo(CityObj):
@@ -98,3 +100,14 @@ class Meteo(CityObj):
             cnx.close()
         except mysql.connector.Error as err:
             print(f"Something is wrong {err}")
+
+    def display(self):
+        cnx = mysql.connector.connect(user='root', password='12qwasZX',
+                                      host='127.0.0.1',
+                                      database='weather')
+
+        df = pd.read_sql('select pointname, count(*) as count FROM meteodata GROUP BY pointname', cnx)
+        print(df)
+        series = pd.Series(data=df['count'].to_list(), index=df['pointname'].to_list())
+        series.plot(kind='bar')
+        plt.show()

@@ -55,7 +55,7 @@ class Bank(CityObj):
     def set_frame_and_series(self):
         self.__rates_frame = pd.DataFrame(self.__rates).T
         #self.__rates_frame = self.__rates_frame.astype('float')
-        self.__rates_frame['WEIGHT'] = self.__rates_frame.T.sum()
+        #self.__rates_frame['WEIGHT'] = self.__rates_frame.T.sum()
 
         self.__usd_series = self.__rates_frame['USD']
         self.__eur_series = self.__rates_frame['EUR']
