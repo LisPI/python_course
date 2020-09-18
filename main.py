@@ -93,7 +93,7 @@ def main():
     bank.get_rates_frame().plot(kind='bar')
     plt.xlabel("Дата")
     plt.ylabel("Стоимость")
-    plt.show()
+    plt.sho w()
 
     meteo = Meteo("Beautiful street", "+374523523")
     print(meteo.info())
