@@ -1,4 +1,4 @@
 # python_course
-For free cource
+For a free course
 
 https://cloud.mail.ru/public/5GNj/54EEKEwQP/
